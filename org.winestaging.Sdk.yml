@@ -8,7 +8,7 @@ runtime-version: &runtime-version '24.08'
 finish-args:
   - --sdk=org.winestaging.Sdk//10.11
   - --runtime=org.winestaging.Platform//10.11
-  - --socket=pcsc                      # Child apps will need to enable this to access smartcards
+  - --socket=pcsc                             # Child apps will need to enable this to access smartcards
 sdk-extensions:
   # - org.freedesktop.Sdk.Debug
   # - org.freedesktop.Sdk.Locale
@@ -140,11 +140,11 @@ modules:
     buildsystem: meson
     cleanup: &libosmesa-cleanup
       - /share/drirc.d
-      - /share/docs   # Remove documentation files
-      - '*.la'        # Remove libtool archive files
-      - '*.a'         # Remove static library files
-      - /include      # Remove header files
-      - /lib/debug    # Remove debug files
+      - /share/docs    # Remove documentation files
+      - '*.la'         # Remove libtool archive files
+      - '*.a'          # Remove static library files
+      - /include       # Remove header files
+      - /lib/debug     # Remove debug files
 
   - name: libosmesa-32
     sources: *libosmesa-sources
@@ -167,11 +167,11 @@ modules:
           tag-pattern: ^v(\d[\d\.]+\d)$ # Regex pattern that matches latest git tag and compares it to source
     buildsystem: cmake
     cleanup: # Files to be removed after all modules are built
-      - /share/docs   # Remove documentation files
-      - '*.la'        # Remove libtool archive files
-      - '*.a'         # Remove static library files
-      - /include      # Remove header files
-      - /lib/debug    # Remove debug files
+      - /share/docs # Remove documentation files
+      - '*.la'      # Remove libtool archive files
+      - '*.a'       # Remove static library files
+      - /include    # Remove header files
+      - /lib/debug  # Remove debug files
 
   # For handling network traffic/packet capture (Optional Wine dependency)
   - name: libpcap
@@ -184,11 +184,11 @@ modules:
           type: git
           tag-pattern: ^libpcap-(\d[\d\.]+\d)$ # Regex pattern that matches latest git tag and compares it to source
     cleanup: &libpcap-cleanup
-      - /share/docs   # Remove documentation files
-      - '*.la'        # Remove libtool archive files
-      - '*.a'         # Remove static library files
-      - /include      # Remove header files
-      - /lib/debug    # Remove debug files
+      - /share/docs # Remove documentation files
+      - '*.la'      # Remove libtool archive files
+      - '*.a'       # Remove static library files
+      - /include    # Remove header files
+      - /lib/debug  # Remove debug files
 
   - name: libpcap-32
     sources: *libpcap-sources
@@ -210,11 +210,11 @@ modules:
     config-opts: &libpcsclite-config-opts
       - --disable-polkit # Disable polkit dependency
     cleanup: &libpcsclite-cleanup
-      - /share/docs   # Remove documentation files
-      - '*.la'        # Remove libtool archive files
-      - '*.a'         # Remove static library files
-      - /include      # Remove header files
-      - /lib/debug    # Remove debug files
+      - /share/docs # Remove documentation files
+      - '*.la'      # Remove libtool archive files
+      - '*.a'       # Remove static library files
+      - /include    # Remove header files
+      - /lib/debug  # Remove debug files
 
   - name: libpcsclite-32
     sources: *libpcsclite-sources
@@ -235,11 +235,11 @@ modules:
           type: git
           tag-pattern: ^(\d[\d\.]+\d)$ # Regex pattern that matches latest git tag and compares it to source
     cleanup: &libsane-cleanup
-      - /share/docs   # Remove documentation files
-      - '*.la'        # Remove libtool archive files
-      - '*.a'         # Remove static library files
-      - /include      # Remove header files
-      - /lib/debug    # Remove debug files
+      - /share/docs # Remove documentation files
+      - '*.la'      # Remove libtool archive files
+      - '*.a'       # Remove static library files
+      - /include    # Remove header files
+      - /lib/debug  # Remove debug files
 
   - name: libsane-32
     sources: *libsane-sources
@@ -259,11 +259,11 @@ modules:
           type: git
           tag-pattern: ^v(\d[\d\.]+\d)$ # Regex pattern that matches latest git tag and compares it to source
     cleanup: &libusb-cleanup
-      - /share/docs   # Remove documentation files
-      - '*.la'        # Remove libtool archive files
-      - '*.a'         # Remove static library files
-      - /include      # Remove header files
-      - /lib/debug    # Remove debug files
+      - /share/docs # Remove documentation files
+      - '*.la'      # Remove libtool archive files
+      - '*.a'       # Remove static library files
+      - /include    # Remove header files
+      - /lib/debug  # Remove debug files
 
   - name: Libusb-32
     sources: *libusb-sources
@@ -287,11 +287,11 @@ modules:
       - type: patch
         path: Patches/libgphoto-gcc14.patch
     cleanup: &libgphoto2-cleanup
-      - /share/docs   # Remove documentation files
-      - '*.la'        # Remove libtool archive files
-      - '*.a'         # Remove static library files
-      - /include      # Remove header files
-      - /lib/debug    # Remove debug files
+      - /share/docs # Remove documentation files
+      - '*.la'      # Remove libtool archive files
+      - '*.a'       # Remove static library files
+      - /include    # Remove header files
+      - /lib/debug  # Remove debug files
 
   - name: libgphoto2-32
     sources: *libgphoto2-sources
@@ -311,11 +311,11 @@ modules:
           url: http://deb.debian.org/debian/pool/main/libc/libcapi20-3/ # Use this file to...
           pattern: (libcapi20-3_(\d[\d\.]+\d).orig.tar.bz2)             # Search for this regex pattern and compare it to source to see if there is a newer version
     cleanup: &libcapi20-cleanup
-      - /share/docs   # Remove documentation files
-      - '*.la'        # Remove libtool archive files
-      - '*.a'         # Remove static library files
-      - /include      # Remove header files
-      - /lib/debug    # Remove debug files
+      - /share/docs # Remove documentation files
+      - '*.la'      # Remove libtool archive files
+      - '*.a'       # Remove static library files
+      - /include    # Remove header files
+      - /lib/debug  # Remove debug files
 
   - name: libcapi20-32bit
     sources: *libcapi20_sources
@@ -337,12 +337,12 @@ modules:
           url-template: https://kerberos.org/dist/krb5/$major.$minor/krb5-$version.tar.gz # Compare this file (found using regex match from above) to the source to see if there is a newer version
     subdir: src # krb5 has the source code in a subdir called src
     cleanup: &krb5-cleanup
-      - /share/docs       # Remove documentation files
-      - /share/examples   # Remove example files
-      - '*.la'            # Remove libtool archive files
-      - '*.a'             # Remove static library files
-      - /include          # Remove header files
-      - /lib/debug        # Remove debug files
+      - /share/docs     # Remove documentation files
+      - /share/examples # Remove example files
+      - '*.la'          # Remove libtool archive files
+      - '*.a'           # Remove static library files
+      - /include        # Remove header files
+      - /lib/debug      # Remove debug files
 
   - name: krb5-32bit
     sources: *krb5-sources
@@ -390,11 +390,11 @@ modules:
       - --without-ads
       - --without-pam
     cleanup: &samba-cleanup
-      - /share/docs       # Remove documentation files
-      - '*.la'            # Remove libtool archive files
-      - '*.a'             # Remove static library files
-      - /include          # Remove header files
-      - /lib/debug        # Remove debug files
+      - /share/docs # Remove documentation files
+      - '*.la'      # Remove libtool archive files
+      - '*.a'       # Remove static library files
+      - /include    # Remove header files
+      - /lib/debug  # Remove debug files
 
   - name: samba-32
     sources: *samba-sources
@@ -478,12 +478,12 @@ modules:
         install -Dm644 org.winestaging.Sdk.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo/      # Install SDK metainfo
         install -Dm644 org.winestaging.Platform.metainfo.xml -t ${FLATPAK_DEST}/share/metainfo/ # Install Platform metainfo
     cleanup:
-      - /share/docs       # Remove documentation files
-      - /share/examples   # Remove example files
-      - '*.la'            # Remove libtool archive files
-      - '*.a'             # Remove static library files
-      - /include          # Remove header files
-      - /lib/debug        # Remove debug files
+      - /share/docs     # Remove documentation files
+      - /share/examples # Remove example files
+      - '*.la'          # Remove libtool archive files
+      - '*.a'           # Remove static library files
+      - /include        # Remove header files
+      - /lib/debug      # Remove debug files
 
   # Wine addon that allows opening website content
   - name: wine-gecko
@@ -549,12 +549,12 @@ modules:
       - |
         make install
     cleanup:
-      - /share/docs       # Remove documentation files
-      - /share/examples   # Remove example files
-      - '*.la'            # Remove libtool archive files
-      - '*.a'             # Remove static library files
-      - /include          # Remove header files
-      - /lib/debug        # Remove debug files
+      - /share/docs     # Remove documentation files
+      - /share/examples # Remove example files
+      - '*.la'          # Remove libtool archive files
+      - '*.a'           # Remove static library files
+      - /include        # Remove header files
+      - /lib/debug      # Remove debug files
 
   # For extracting Microsoft Cabinet files (used by Wine Tricks)
   - name: cabextract
@@ -568,12 +568,12 @@ modules:
           version-pattern: href="cabextract-(\d[\d\.]+\d).tar.gz"                 # Search for this regex pattern
           url-template: https://www.cabextract.org.uk/cabextract-$version.tar.gz  # Compare this file (found using regex match from above) to the source to see if there is a newer version
     cleanup:
-      - /share/docs       # Remove documentation files
-      - /share/examples   # Remove example files
-      - '*.la'            # Remove libtool archive files
-      - '*.a'             # Remove static library files
-      - /include          # Remove header files
-      - /lib/debug        # Remove debug files
+      - /share/docs     # Remove documentation files
+      - /share/examples # Remove example files
+      - '*.la'          # Remove libtool archive files
+      - '*.a'           # Remove static library files
+      - /include        # Remove header files
+      - /lib/debug      # Remove debug files
 
   # Vulkan based D3D8, 9, 10, and 11 replacement dlls
   # Note: This module just places the DXVK dlls in ${FLATPAK_DEST}/share/dxvk/ and child Apps will have to copy/replace the default Wine dlls with these to make use of DXVK
@@ -634,11 +634,11 @@ modules:
           url: https://download.savannah.gnu.org/releases/icoutils/ # Use this file to...
           pattern: (icoutils-(\d[\d\.]+\d).tar.bz2)                 # Search for this regex pattern and compare it to source to see if there is a newer version
     cleanup:
-      - /share/docs   # Remove documentation files
-      - '*.la'        # Remove libtool archive files
-      - '*.a'         # Remove static library files
-      - /include      # Remove header files
-      - /lib/debug    # Remove debug files
+      - /share/docs # Remove documentation files
+      - '*.la'      # Remove libtool archive files
+      - '*.a'       # Remove static library files
+      - /include    # Remove header files
+      - /lib/debug  # Remove debug files
 
   # For converting icons to PNGs and SVGs
   - name: imagemagick
@@ -651,11 +651,11 @@ modules:
           type: git
           tag-pattern: ^(\d[\d\.]+\d-\d+)$ # Regex pattern that matches latest git tag and compares it to source
     cleanup:
-      - /share/docs   # Remove documentation files
-      - '*.la'        # Remove libtool archive files
-      - '*.a'         # Remove static library files
-      - /include      # Remove header files
-      - /lib/debug    # Remove debug files
+      - /share/docs # Remove documentation files
+      - '*.la'      # Remove libtool archive files
+      - '*.a'       # Remove static library files
+      - /include    # Remove header files
+      - /lib/debug  # Remove debug files
 
   # TODO: Find a way to convert to SVG without loosing color
   # For converting icons to SVGs (An optional ImageMagick delegate)
@@ -670,9 +670,9 @@ modules:
           version-pattern: /potrace-(\d[\d\.]+\d).tar.gz                                          # Search for this regex pattern
           url-template: https://potrace.sourceforge.net/download/$version/potrace-$version.tar.gz # Compare this file (found using regex match from above) to the source to see if there is a newer version
     cleanup:
-      - /share/docs   # Remove documentation files
-      - '*.la'        # Remove libtool archive files
-      - '*.a'         # Remove static library files
-      - /include      # Remove header files
-      - /lib/debug    # Remove debug files
+      - /share/docs # Remove documentation files
+      - '*.la'      # Remove libtool archive files
+      - '*.a'       # Remove static library files
+      - /include    # Remove header files
+      - /lib/debug  # Remove debug files
 
