@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="runtime">
+  <id>org.winestaging.Sdk</id>
+  <name>Wine Staging Sdk</name>
+  <summary>Windows Program Compatibility Tool</summary>
+  <releases>
+    <release version="10.10" date="2025-06-18">
+      <description/>
+    </release>
+  </releases>
+</component>

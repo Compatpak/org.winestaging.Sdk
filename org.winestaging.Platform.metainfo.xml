@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="runtime">
+    <id>org.winestaging.Platform</id>
+    <name>Wine Staging Platform</name>
+    <summary>Wine Staging Platform</summary>
+</component>
