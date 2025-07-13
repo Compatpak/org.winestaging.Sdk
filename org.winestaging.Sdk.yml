@@ -1,13 +1,13 @@
 build-runtime: true
 id: org.winestaging.Sdk
 id-platform: org.winestaging.Platform
-branch: &app-version '10.11'
+branch: &app-version '10.12'
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
 runtime-version: &runtime-version '24.08'
 finish-args:
-  - --sdk=org.winestaging.Sdk//10.11
-  - --runtime=org.winestaging.Platform//10.11
+  - --sdk=org.winestaging.Sdk//10.12
+  - --runtime=org.winestaging.Platform//10.12
   - --socket=pcsc                             # Child apps will need to enable this to access smartcards
 sdk-extensions:
   # - org.freedesktop.Sdk.Debug
