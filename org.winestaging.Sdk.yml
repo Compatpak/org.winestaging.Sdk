@@ -31,16 +31,16 @@ inherit-extensions:
 #   - org.freedesktop.Sdk.Extension
 add-extensions:
   # Re-export org.freedesktop.Platform extensions for child Apps to inherit
-  org.freedesktop.Platform.Compat.i386:       # 32bit Linux compatibility
+  org.freedesktop.Platform.Compat.i386:        # 32bit Linux compatibility
     directory: lib/i386-linux-gnu
     version: *runtime-version
 
-  org.freedesktop.Platform.Compat.i386.Debug: # 32bit Linux compatibility debug
+  org.freedesktop.Platform.Compat.i386.Debug:  # 32bit Linux compatibility debug
     directory: lib/debug/lib/i386-linux-gnu
     version: *runtime-version
     no-autodownload: true
 
-  org.freedesktop.Platform.GL32:              # 32bit OpenGL
+  org.freedesktop.Platform.GL32:               # 32bit OpenGL
     directory: lib/i386-linux-gnu/GL
     version: '1.4'
     versions: 24.08;1.4
@@ -53,7 +53,7 @@ add-extensions:
     enable-if: active-gl-driver
     autoprune-unless: active-gl-driver
 
-  org.freedesktop.Platform.GL32.Debug:        # 32bit OpenGL Debug
+  org.freedesktop.Platform.GL32.Debug:         # 32bit OpenGL Debug
     directory: lib/debug/lib/i386-linux-gnu/GL
     version: '1.4'
     versions: 24.08;1.4
@@ -63,7 +63,7 @@ add-extensions:
     enable-if: active-gl-driver
     autoprune-unless: active-gl-driver
 
-  org.freedesktop.Platform.VAAPI.Intel.i386:  # 32bit Intel VAAPI
+  org.freedesktop.Platform.VAAPI.Intel.i386:   # 32bit Intel VAAPI
     directory: lib/i386-linux-gnu/dri/intel-vaapi-driver
     version: *runtime-version
     versions: *runtime-version
@@ -73,13 +73,13 @@ add-extensions:
     download-if: have-intel-gpu
     autoprune-unless: have-intel-gpu
 
-  org.freedesktop.Platform.ffmpeg-full:       # FFmpeg
+  org.freedesktop.Platform.ffmpeg-full:        # FFmpeg
     directory: lib/ffmpeg
     add-ld-path: .
     version: *runtime-version
     autodelete: false
 
-  org.freedesktop.Platform.ffmpeg_full.i386:  # 32bit FFmpeg
+  org.freedesktop.Platform.ffmpeg_full.i386:   # 32bit FFmpeg
     directory: lib32/ffmpeg
     add-ld-path: .
     version: *runtime-version
