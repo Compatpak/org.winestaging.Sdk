@@ -623,6 +623,17 @@ modules:
         make -j`nproc --ignore=2`                      # Build using the number of available cores minus 2
         install -Dm755 build/* -t ${FLATPAK_DEST}/bin/ # Install all built files
 
+  # For extracting files from msi executables
+  - name: msitools
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/GNOME/msitools
+        tag: v0.106
+        commit: 279a1d54ad58a4f5593462ffd607c663f60a32a1
+        x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
+          type: git
+          tag-pattern: ^v(\d[\d\.]+\d)$ # Regex pattern that matches latest git tag and compares it to source
+
   # For extracting icons from exes
   - name: icoutils
     sources:
