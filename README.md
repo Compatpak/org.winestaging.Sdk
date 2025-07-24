@@ -1,6 +1,6 @@
 # Wine Staging SDK/Platform
 ## Building
-> **_NOTE:_**  With org.freedesktop.Sdk//24.08 org.freedesktop.Platform//24.08 org.freedesktop.Sdk.Extension.mingw-w64//24.08 org.freedesktop.Sdk.Compat.i386//24.08 org.freedesktop.Sdk.Extension.toolchain-i386//24.08 installed.
+> **_NOTE:_**  With org.freedesktop.Sdk//24.08 org.freedesktop.Platform//24.08 org.freedesktop.Sdk.Extension.mingw-w64//24.08 org.freedesktop.Sdk.Compat.i386//24.08 org.freedesktop.Sdk.Extension.toolchain-i386//24.08 org.freedesktop.Sdk.Extension.vala//24.08 installed.
 ```console
 flatpak run org.flatpak.Builder build-dir --repo=../Compatpak/repo --ccache --force-clean org.winestaging.Sdk.yml
 ```

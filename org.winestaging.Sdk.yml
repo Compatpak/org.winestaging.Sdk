@@ -16,6 +16,7 @@ sdk-extensions:
   - org.freedesktop.Sdk.Compat.i386              # Needed for building 32bit Wine
   - org.freedesktop.Sdk.Extension.toolchain-i386 # Needed for building 32bit Wine
   - org.freedesktop.Sdk.Extension.mingw-w64      # Needed for cross-compiling 32/64bit Wine (Compiling Wine Windows dlls, and rpc-bridge)
+  - org.freedesktop.Sdk.Extension.vala           # Needed for building msitools
 # platform-extensions:
 #   - org.freedesktop.Platform.Locale
 inherit-extensions:
@@ -283,9 +284,6 @@ modules:
           url: https://raw.githubusercontent.com/gphoto/libgphoto2/refs/heads/master/NEWS                           # Use this file to...
           version-pattern: libgphoto2\s(\d[\d\.]+\d)\srelease                                                       # Search for this regex pattern
           url-template: https://github.com/gphoto/libgphoto2/releases/download/v$version/libgphoto2-$version.tar.xz # Compare this file (found using regex match from above) to the source to see if there is a newer version
-      # Patch that allows building with stricter GCC 14 compiler
-      - type: patch
-        path: Patches/libgphoto-gcc14.patch
     cleanup: &libgphoto2-cleanup
       - /share/docs # Remove documentation files
       - '*.la'      # Remove libtool archive files
@@ -424,9 +422,6 @@ modules:
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^v(\d+\.\d+)$ # Regex pattern that matches latest git tag and compares it to source
-
-      - type: file
-        path: org.wine.Sdk.metainfo.xml
 
       - type: file
         path: org.winestaging.Sdk.metainfo.xml
@@ -623,6 +618,23 @@ modules:
         make -j`nproc --ignore=2`                      # Build using the number of available cores minus 2
         install -Dm755 build/* -t ${FLATPAK_DEST}/bin/ # Install all built files
 
+  # For handling different structured file formats (Mandatory msitools dependency)
+  - name: libgsf
+    sources:
+      - type: git
+        url: https://gitlab.gnome.org/GNOME/libgsf
+        tag: LIBGSF_1_14_53
+        commit: 64a465dd1a12f3590b6cc30fe7a97c841794cf9a
+        x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
+          type: git
+          tag-pattern: ^LIBGSF_(\d[\d\_]+\d)$ # Regex pattern that matches latest git tag and compares it to source
+    cleanup:
+      - /share/docs # Remove documentation files
+      - '*.la'      # Remove libtool archive files
+      - '*.a'       # Remove static library files
+      - /include    # Remove header files
+      - /lib/debug  # Remove debug files
+
   # For extracting files from msi executables
   - name: msitools
     sources:
@@ -633,6 +645,16 @@ modules:
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^v(\d[\d\.]+\d)$ # Regex pattern that matches latest git tag and compares it to source
+    build-options:
+      prepend-path: /usr/lib/sdk/vala/bin/           # Contains vala binary
+      prepend-ld-library-path: /usr/lib/sdk/vala/lib # Contains vala libraries
+    buildsystem: meson
+    cleanup:
+      - /share/docs # Remove documentation files
+      - '*.la'      # Remove libtool archive files
+      - '*.a'       # Remove static library files
+      - /include    # Remove header files
+      - /lib/debug  # Remove debug files
 
   # For extracting icons from exes
   - name: icoutils
