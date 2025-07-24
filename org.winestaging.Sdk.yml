@@ -160,8 +160,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/KhronosGroup/OpenCL-Headers.git
-        tag: v2025.06.13
-        commit: 2e30669d48718fd460f085b4b35b160dad51ce9d
+        tag: v2025.07.22
+        commit: 8a97ebc88daa3495d6f57ec10bb515224400186f
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^v(\d[\d\.]+\d)$ # Regex pattern that matches latest git tag and compares it to source
