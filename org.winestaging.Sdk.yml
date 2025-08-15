@@ -690,8 +690,8 @@ modules:
       - /include    # Remove header files
       - /lib/debug  # Remove debug files
 
-  # TODO: Find a way to convert to SVG without loosing color
   # For converting icons to SVGs (An optional ImageMagick delegate)
+  # TODO: Find a way to convert to SVG without loosing color
   - name: potrace
     sources:
       - type: archive
@@ -702,6 +702,29 @@ modules:
           url: https://potrace.sourceforge.net/                                                   # Use this file to...
           version-pattern: /potrace-(\d[\d\.]+\d).tar.gz                                          # Search for this regex pattern
           url-template: https://potrace.sourceforge.net/download/$version/potrace-$version.tar.gz # Compare this file (found using regex match from above) to the source to see if there is a newer version
+    cleanup:
+      - /share/docs # Remove documentation files
+      - '*.la'      # Remove libtool archive files
+      - '*.a'       # Remove static library files
+      - /include    # Remove header files
+      - /lib/debug  # Remove debug files
+
+  # For upscaling images
+  # TODO: Add x-checker-data
+  - name: upscayl
+    sources:
+      - type: archive
+        url: https://github.com/upscayl/upscayl/releases/download/v2.15.0/upscayl-2.15.0-linux.zip
+        sha256: 3a43bfa80ba10a5ec1dcbbec9e6620b465f6aa541b7280b6bbabf8e306b67053
+        # x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
+        #   type: html
+        #   url: https://potrace.sourceforge.net/                                                   # Use this file to...
+        #   version-pattern: /potrace-(\d[\d\.]+\d).tar.gz                                          # Search for this regex pattern
+        #   url-template: https://potrace.sourceforge.net/download/$version/potrace-$version.tar.gz # Compare this file (found using regex match from above) to the source to see if there is a newer version
+    buildsystem: simple
+    build-commands:
+      - |
+        mv Upscayl/bin/upscayl-bin ${FLATPAK_DEST}/bin/upscayl\nmv Upscayl/models ${FLATPAK_DEST}/bin
     cleanup:
       - /share/docs # Remove documentation files
       - '*.la'      # Remove libtool archive files
