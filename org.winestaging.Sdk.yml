@@ -326,8 +326,8 @@ modules:
   - name: krb5
     sources: &krb5-sources
       - type: archive
-        url: https://kerberos.org/dist/krb5/1.21/krb5-1.21.3.tar.gz
-        sha256: b7a4cd5ead67fb08b980b21abd150ff7217e85ea320c9ed0c6dadd304840ad35
+        url: https://kerberos.org/dist/krb5/1.22/krb5-1.22.1.tar.gz
+        sha256: 1a8832b8cad923ebbf1394f67e2efcf41e3a49f460285a66e35adec8fa0053af
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: html
           url: https://kerberos.org/dist/                                                 # Use this file to...
@@ -371,8 +371,8 @@ modules:
   - name: samba
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/stable/samba-4.22.3.tar.gz
-        sha256: 8fd7092629a3596d935cd7567d934979f94272918ec3affd0cc807934ecf22ba
+        url: https://download.samba.org/pub/samba/stable/samba-4.22.4.tar.gz
+        sha256: a41a828848abdf5e942c900ca178597e18aab7b61d3c06a9b5ba43661988010b
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: html
           url: https://download.samba.org/pub/samba/stable/ # Use this file to...
@@ -407,8 +407,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.winehq.org/wine/wine.git
-        tag: wine-10.13
-        commit: 75b9e1722d11d75c3d7745b39a03b73e9f9003ba
+        tag: wine-10.14
+        commit: 1d1e5fb3e51b2acb0143e86c16463dfed1bc90aa
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^wine-(\d+\.\d+)$ # Regex pattern that matches latest git tag and compares it to source
@@ -416,8 +416,8 @@ modules:
 
       - type: git
         url: https://gitlab.winehq.org/wine/wine-staging.git
-        tag: v10.13
-        commit: a8a6d7b0ed4fe5217490907cc9222de8f2bdc040
+        tag: v10.14
+        commit: e004127f415ad478c90cbbf39151b3e136198a85
         dest: WineStaging
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
@@ -514,8 +514,8 @@ modules:
   - name: wine-mono
     sources:
       - type: archive
-        url: https://dl.winehq.org/wine/wine-mono/10.1.0/wine-mono-10.1.0-x86.tar.xz
-        sha256: 7f4763edd350503a3a70b1bbbdbff944f1f4bb1552f0731957363d162ce2589a
+        url: https://dl.winehq.org/wine/wine-mono/10.2.0/wine-mono-10.2.0-x86.tar.xz
+        sha256: ba12894e566944be8a04fdae62e0ebe0908a159020ab9a4e72ac4db774732de0
         strip-components: 0
         # TODO: Keeps tabs that the URL below is good for getting the correct latest version (URL below uses the master version of Wine not the specific version used above and could possibly update Wine Mono to a newer version before the used Wine version is ready)
         x-checker-data:                                                                             # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
@@ -575,8 +575,8 @@ modules:
   - name: dxvk
     sources:
       - type: archive
-        url: https://github.com/doitsujin/dxvk/releases/download/v2.7/dxvk-2.7.tar.gz
-        sha256: 1e569b0f7a1121d9fcee1614314fcb0c22e71c51d0b9df121e3eb81ae8c0346d
+        url: https://github.com/doitsujin/dxvk/releases/download/v2.7.1/dxvk-2.7.1.tar.gz
+        sha256: d85ce7c79f57ecd765aaa1b9e7007cb875e6fde9f6d331df799bce73d513ce87
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: html
           url: https://github.com/doitsujin/dxvk/tags                                                      # Use this file to...
@@ -678,8 +678,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ImageMagick/ImageMagick.git
-        tag: 7.1.2-1
-        commit: 83b6fc338ae1d38602eb5f6b307393adc3a0e1a7
+        tag: 7.1.2-3
+        commit: 147bc9c12ce8fbc1e94af5b5f6f0643ca410103a
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^(\d[\d\.]+\d-\d+)$ # Regex pattern that matches latest git tag and compares it to source
