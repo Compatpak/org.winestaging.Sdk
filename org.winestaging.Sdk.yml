@@ -721,10 +721,12 @@ modules:
         #   url: https://potrace.sourceforge.net/                                                   # Use this file to...
         #   version-pattern: /potrace-(\d[\d\.]+\d).tar.gz                                          # Search for this regex pattern
         #   url-template: https://potrace.sourceforge.net/download/$version/potrace-$version.tar.gz # Compare this file (found using regex match from above) to the source to see if there is a newer version
+        dest: upscayl
     buildsystem: simple
     build-commands:
       - |
-        mv Upscayl/bin/upscayl-bin ${FLATPAK_DEST}/bin/upscayl\nmv Upscayl/models ${FLATPAK_DEST}/bin
+        mv upscayl/bin/* ${FLATPAK_DEST}/bin
+        mv upscayl/models ${FLATPAK_DEST}/bin
     cleanup:
       - /share/docs # Remove documentation files
       - '*.la'      # Remove libtool archive files
