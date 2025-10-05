@@ -371,8 +371,8 @@ modules:
   - name: samba
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/stable/samba-4.23.0.tar.gz
-        sha256: b0cb963a63eb1515227f3779a46d3a7f790c1bbfeeb4b31fd43e405eefe7a3af
+        url: https://download.samba.org/pub/samba/stable/samba-4.23.1.tar.gz
+        sha256: a4fe464652c136600525dcd2665737c72248c6a49d9d5323661a683800c39f75
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: html
           url: https://download.samba.org/pub/samba/stable/ # Use this file to...
@@ -407,8 +407,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.winehq.org/wine/wine.git
-        tag: wine-10.15
-        commit: 72dc2afb1a78f88cd930d61a20498838a3bea271
+        tag: wine-10.16
+        commit: 01269452e0fbb1f081d506bd64996590a553e2b9
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^wine-(\d+\.\d+)$ # Regex pattern that matches latest git tag and compares it to source
@@ -416,8 +416,8 @@ modules:
 
       - type: git
         url: https://gitlab.winehq.org/wine/wine-staging.git
-        tag: v10.15
-        commit: 978b387c1c5a46dfa36560266c988cf3412bcef5
+        tag: v10.16
+        commit: 265554a9da5f82e02307de7942b200eb87c44812
         dest: WineStaging
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
@@ -605,8 +605,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/EnderIce2/rpc-bridge.git
-        tag: v1.4.0.0
-        commit: 77a2a748ad97d7dcc6839d83f8eb620ffa85a02c
+        tag: v1.4.0.1
+        commit: 340243a1c9a461ab36b0ab356cff5d1edf17bea1
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^v(\d[\d\.]+\d)$ # Regex pattern that matches latest git tag and compares it to source
