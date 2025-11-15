@@ -371,8 +371,8 @@ modules:
   - name: samba
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/stable/samba-4.23.2.tar.gz
-        sha256: 2de330647e1486683597e261285d04a9b7514ab5c7da27711736e22c7f2b9c2e
+        url: https://download.samba.org/pub/samba/stable/samba-4.23.3.tar.gz
+        sha256: 06cdbb27a6956978b045455fe0696d998ffbac8d24ba24de87a4ef8200813320
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: html
           url: https://download.samba.org/pub/samba/stable/ # Use this file to...
@@ -407,8 +407,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.winehq.org/wine/wine.git
-        tag: wine-10.18
-        commit: 1e998672cff00f8ff7628aaf9cda6026303b5ea3
+        tag: wine-10.19
+        commit: fe1175af410d04f806dda770502d0476a8ccbef6
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^wine-(\d+\.\d+)$ # Regex pattern that matches latest git tag and compares it to source
@@ -416,8 +416,8 @@ modules:
 
       - type: git
         url: https://gitlab.winehq.org/wine/wine-staging.git
-        tag: v10.18
-        commit: 23267ac0b6a7aa4982c60bd3ed543a3a1d6be446
+        tag: v10.19
+        commit: 02295978091f250dbe9d6a555ea38e10075867ab
         dest: WineStaging
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
