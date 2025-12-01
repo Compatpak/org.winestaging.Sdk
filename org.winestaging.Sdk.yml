@@ -407,8 +407,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.winehq.org/wine/wine.git
-        tag: wine-10.19
-        commit: fe1175af410d04f806dda770502d0476a8ccbef6
+        tag: wine-10.20
+        commit: 4dfbf077cf708e4bbffa8e086d78d6652bbd69d8
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^wine-(\d+\.\d+)$ # Regex pattern that matches latest git tag and compares it to source
@@ -416,8 +416,8 @@ modules:
 
       - type: git
         url: https://gitlab.winehq.org/wine/wine-staging.git
-        tag: v10.19
-        commit: 02295978091f250dbe9d6a555ea38e10075867ab
+        tag: v10.20
+        commit: 54f4c57fd6d8724b72c091c9f714795cd763ba45
         dest: WineStaging
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
@@ -678,8 +678,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ImageMagick/ImageMagick.git
-        tag: 7.1.2-8
-        commit: a3b13d143fd7dea44cd71d31aa02f411b597688f
+        tag: 7.1.2-9
+        commit: a90c0505dcb65c8caff3c545be10afea6028ec8f
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^(\d[\d\.]+\d-\d+)$ # Regex pattern that matches latest git tag and compares it to source
