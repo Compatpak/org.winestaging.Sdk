@@ -407,8 +407,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.winehq.org/wine/wine.git
-        tag: wine-11.1
-        commit: afba987dda1430dc0d9f36fc6f27cd3584bce79e
+        tag: wine-11.2
+        commit: 87ba10bb3aa8ea636dff5c2030b376da1627910a
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^wine-(\d+\.\d+)$ # Regex pattern that matches latest git tag and compares it to source
@@ -416,8 +416,8 @@ modules:
 
       - type: git
         url: https://gitlab.winehq.org/wine/wine-staging.git
-        tag: v11.1
-        commit: 90f784324dd2ce17310737fa6f32dba7e1fafb78
+        tag: v11.2
+        commit: 497d45786dfadc5ab053e96fd9215a907309146b
         dest: WineStaging
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
@@ -514,8 +514,8 @@ modules:
   - name: wine-mono
     sources:
       - type: archive
-        url: https://dl.winehq.org/wine/wine-mono/10.4.1/wine-mono-10.4.1-x86.tar.xz
-        sha256: a16606ef0724202e6a6848ece6e0cbba64d11e2f11aefe744af1d93c6d9f99bb
+        url: https://dl.winehq.org/wine/wine-mono/11.0.0/wine-mono-11.0.0-x86.tar.xz
+        sha256: 0cd723aa28897f7d7d2702eed6c72e4262255980e212bc2b3c94bfa234abe5fd
         strip-components: 0
         # TODO: Keeps tabs that the URL below is good for getting the correct latest version (URL below uses the master version of Wine not the specific version used above and could possibly update Wine Mono to a newer version before the used Wine version is ready)
         x-checker-data:                                                                             # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
