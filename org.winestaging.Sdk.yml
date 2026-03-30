@@ -371,8 +371,8 @@ modules:
   - name: samba
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/stable/samba-4.23.6.tar.gz
-        sha256: e3dabd8b5e42dc97669fa0faef032510a94e496b58f7067082e5036d88f0e702
+        url: https://download.samba.org/pub/samba/stable/samba-4.24.0.tar.gz
+        sha256: 1b1e457fd651a612cd08226cc6efd04e5d01e36d918c8b4c4e470e74e86881ea
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: html
           url: https://download.samba.org/pub/samba/stable/ # Use this file to...
@@ -407,8 +407,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.winehq.org/wine/wine.git
-        tag: wine-11.4
-        commit: cc893ef9cb17b994bfd1f1a1f7355be55e615623
+        tag: wine-11.5
+        commit: 1dbc94083d1b508c3708c857b1715f9d379aa78a
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^wine-(\d+\.\d+)$ # Regex pattern that matches latest git tag and compares it to source
@@ -416,8 +416,8 @@ modules:
 
       - type: git
         url: https://gitlab.winehq.org/wine/wine-staging.git
-        tag: v11.4
-        commit: f17c9eab35d6557a4533b6df141f424383530ad4
+        tag: v11.5
+        commit: 5bfda3684532761f81da9dd86e08fb1601a73e6a
         dest: WineStaging
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
@@ -605,8 +605,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/EnderIce2/rpc-bridge.git
-        tag: v1.4.0.1
-        commit: 340243a1c9a461ab36b0ab356cff5d1edf17bea1
+        tag: v1.4.1.1
+        commit: dc87b38da347a5fadc9ec3c0442a877021d3909f
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^v(\d[\d\.]+\d)$ # Regex pattern that matches latest git tag and compares it to source
@@ -623,8 +623,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.gnome.org/GNOME/libgsf
-        tag: LIBGSF_1_14_55
-        commit: ee6b07d11c48922eb91972c5c6a7ba9c2072ae50
+        tag: LIBGSF_1_14_56
+        commit: fcf5c273c186069d579738acb12ca724b7a1445e
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^LIBGSF_(\d[\d\_]+\d)$ # Regex pattern that matches latest git tag and compares it to source
@@ -678,8 +678,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ImageMagick/ImageMagick.git
-        tag: 7.1.2-15
-        commit: b5fdb90dac0e6d0bf1bbd95704bbd60216a5bc23
+        tag: 7.1.2-18
+        commit: d4e4b2b35a573fb7d96bc64ff1a417415bbe0f4c
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^(\d[\d\.]+\d-\d+)$ # Regex pattern that matches latest git tag and compares it to source
