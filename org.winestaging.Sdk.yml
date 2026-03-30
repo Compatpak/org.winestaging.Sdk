@@ -4,7 +4,7 @@ id-platform: org.winestaging.Platform
 branch: &app-version '11.5'
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: &runtime-version '24.08'
+runtime-version: &runtime-version '25.08'
 finish-args:
   - --sdk=org.winestaging.Sdk//11.5
   - --runtime=org.winestaging.Platform//11.5
