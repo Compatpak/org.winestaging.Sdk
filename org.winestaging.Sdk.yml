@@ -407,8 +407,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.winehq.org/wine/wine.git
-        tag: wine-11.7
-        commit: f051a28829e589b5cf025c574cb16fcf7aeb345a
+        tag: wine-11.8
+        commit: 71e7a2e81eec9155d5d0745b491e1cbfab3bf742
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^wine-(\d+\.\d+)$ # Regex pattern that matches latest git tag and compares it to source
@@ -416,8 +416,8 @@ modules:
 
       - type: git
         url: https://gitlab.winehq.org/wine/wine-staging.git
-        tag: v11.7
-        commit: 4782e31581d23ff7b94bc67fd03b72c4a4094ca3
+        tag: v11.8
+        commit: b74a1a3a4fa62d86b93bb4092dc63a6f1eb98c10
         dest: WineStaging
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
@@ -514,8 +514,8 @@ modules:
   - name: wine-mono
     sources:
       - type: archive
-        url: https://dl.winehq.org/wine/wine-mono/11.0.0/wine-mono-11.0.0-x86.tar.xz
-        sha256: 0cd723aa28897f7d7d2702eed6c72e4262255980e212bc2b3c94bfa234abe5fd
+        url: https://dl.winehq.org/wine/wine-mono/11.1.0/wine-mono-11.1.0-x86.tar.xz
+        sha256: 01a7cdc0184c5b22fdf6e7417d50648467b566a107cd51df9c4f3a4acd960c9c
         strip-components: 0
         # TODO: Keeps tabs that the URL below is good for getting the correct latest version (URL below uses the master version of Wine not the specific version used above and could possibly update Wine Mono to a newer version before the used Wine version is ready)
         x-checker-data:                                                                             # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
@@ -623,8 +623,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.gnome.org/GNOME/libgsf
-        tag: LIBGSF_1_14_56
-        commit: fcf5c273c186069d579738acb12ca724b7a1445e
+        tag: LIBGSF_1_14_58
+        commit: cc743384f0c51a5e5bbc94a22f81851bfece6af0
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^LIBGSF_(\d[\d\_]+\d)$ # Regex pattern that matches latest git tag and compares it to source
@@ -678,8 +678,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ImageMagick/ImageMagick.git
-        tag: 7.1.2-19
-        commit: 9fbd2b79450e930edb95e8158d412e57a7b27e83
+        tag: 7.1.2-21
+        commit: c86de049cefb8dd739e16f0e2fdc1ef8d2006d59
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^(\d[\d\.]+\d-\d+)$ # Regex pattern that matches latest git tag and compares it to source
