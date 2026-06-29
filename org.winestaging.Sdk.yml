@@ -109,8 +109,10 @@ modules:
         mkdir -p ${FLATPAK_DEST}/lib/i386-linux-gnu              # 32bit Linux compatibility
         mkdir -p ${FLATPAK_DEST}/lib/debug/lib/i386-linux-gnu    # 32bit Linux compatibility debug
         mkdir -p ${FLATPAK_DEST}/lib/debug/lib/i386-linux-gnu/GL # 32bit OpenGL Debug
-        mkdir -p ${FLATPAK_DEST}/lib/ffmpeg                      # FFmpeg
-        mkdir -p ${FLATPAK_DEST}/lib32/ffmpeg                    # 32bit FFmpeg
+        mkdir -p ${FLATPAK_DEST}/lib/codecs                      # Codecs (replaces ffmpeg-full & openh264)
+        mkdir -p ${FLATPAK_DEST}/lib32/codecs                    # 32bit Codecs
+        mkdir -p ${FLATPAK_DEST}/lib/ffmpeg                      # FFmpeg (Not sure if still needed codecs-extra replaced ffmpeg in 25.08)
+        mkdir -p ${FLATPAK_DEST}/lib32/ffmpeg                    # 32bit FFmpeg (Not sure if still needed codecs-extra replaced ffmpeg in 25.08)
 
         # Make docs directories needed by modules
         mkdir -p /usr/share/runtime/docs/man                     # /usr/share/man symlinks here but it is not created by default and can cause errors when building modules
@@ -133,7 +135,7 @@ modules:
         tag: mesa-20.2.6
         commit: 7b866d516a7dc0a36dc8ea7ce7733414294e26d9
     config-opts: &libosmesa-config-opts
-      - -Dosmesa=classic
+      - -Dosmesa=classic     # Only works because we are using old mesa 20.2.6 (If updated will need to be osmesa=true)
       - -Ddri-drivers=[]
       - -Dgallium-drivers=[]
       - -Dvulkan-drivers=[]
@@ -269,7 +271,7 @@ modules:
       - /include    # Remove header files
       - /lib/debug  # Remove debug files
 
-  - name: Libusb-32
+  - name: libusb-32
     sources: *libusb-sources
     build-options:
       arch:
@@ -305,11 +307,11 @@ modules:
   - name: libcapi20
     sources: &libcapi20_sources
       - type: archive
-        url: http://deb.debian.org/debian/pool/main/libc/libcapi20-3/libcapi20-3_3.27.orig.tar.bz2
+        url: https://deb.debian.org/debian/pool/main/libc/libcapi20-3/libcapi20-3_3.27.orig.tar.bz2
         sha256: d8e423d5adba1750f511a2c088296db2a8a2e1e9209401871b01ce411d8ac583
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: html
-          url: http://deb.debian.org/debian/pool/main/libc/libcapi20-3/ # Use this file to...
+          url: https://deb.debian.org/debian/pool/main/libc/libcapi20-3/ # Use this file to...
           pattern: (libcapi20-3_(\d[\d\.]+\d).orig.tar.bz2)             # Search for this regex pattern and compare it to source to see if there is a newer version
     cleanup: &libcapi20-cleanup
       - /share/docs # Remove documentation files
@@ -318,7 +320,7 @@ modules:
       - /include    # Remove header files
       - /lib/debug  # Remove debug files
 
-  - name: libcapi20-32bit
+  - name: libcapi20-32
     sources: *libcapi20_sources
     build-options:
       arch:
@@ -345,7 +347,7 @@ modules:
       - /include        # Remove header files
       - /lib/debug      # Remove debug files
 
-  - name: krb5-32bit
+  - name: krb5-32
     sources: *krb5-sources
     subdir: src  # krb5 has the source code in a subdir called src
     build-options:
@@ -405,7 +407,7 @@ modules:
         x86_64: *compat-i386-build-options
     cleanup: *samba-cleanup
 
-  # This module builds both Wine64 and Wine32 (needed for WoW64 Wine mode) and so looks much different then other modules that build 64/32bit versions seperately and does not use any YAML compat anchors from above
+  # This module builds both Wine64 and Wine32 (needed for WoW64 Wine mode) and so looks much different then other modules that build 64/32bit versions separately and does not use any YAML compat anchors from above
   - name: winestaging
     sources:
       - type: git
@@ -434,7 +436,7 @@ modules:
     buildsystem: simple
     build-commands:
       - |
-        PATH=$PATH:/usr/lib/sdk/mingw-w64/bin:/usr/lib/sdk/toolchain-i386/bin # Add to PATH, /usr/lib/sdk/mingw-w64/bin contains x86_64-w64-mingw32-gcc and i686-w64-minigw32-gcc compilers from sdk-extension org.freedesktop.Sdk.Extension.mingw-w64, and /usr/lib/sdk/toolchain-i386/bin contains gnu 32bit libs (needed for building the 32bit version of Wine) from org.freedesktop.Sdk.Extension.toolchain-i386
+        PATH=$PATH:/usr/lib/sdk/mingw-w64/bin:/usr/lib/sdk/toolchain-i386/bin # Add to PATH, /usr/lib/sdk/mingw-w64/bin contains x86_64-w64-mingw32-gcc and i686-w64-mingw32-gcc compilers from sdk-extension org.freedesktop.Sdk.Extension.mingw-w64, and /usr/lib/sdk/toolchain-i386/bin contains gnu 32bit libs (needed for building the 32bit version of Wine) from org.freedesktop.Sdk.Extension.toolchain-i386
 
         WineStaging/staging/patchinstall.py DESTDIR="./" --all # Apply Wine Staging patches to Wine before building
 
@@ -468,8 +470,8 @@ modules:
           LDFLAGS="-L/usr/lib32"                                                                  `# Add /usr/lib32 to linker search path ` \
           CC="ccache i686-unknown-linux-gnu-gcc"                                                  `# Compile C with GCC using ccache` \
           CXX="ccache i686-unknown-linux-gnu-g++"                                                 `# Compile C++ with G++ using ccache` \
-          x86_64_CC="ccache i686-w64-mingw32-gcc"                                                 `# Cross-compile C with x86_64-w64-mingw32-gcc using ccache`
-        make -j`nproc --ignore=2`                                                                  # Build 32bit Wine using number of available cores minus
+          x86_64_CC="ccache i686-w64-mingw32-gcc"                                                 `# Cross-compile C with i686-w64-mingw32-gcc using ccache`
+        make -j`nproc --ignore=2`                                                                  # Build 32bit Wine using number of available cores minus 2
         make install
         cd ..
 
@@ -510,7 +512,7 @@ modules:
     buildsystem: simple
     build-commands:
       - |
-        mkdir -p ${FLATPAK_DEST}/share/wine/gecko/           # Make direcory path for Wine Gecko
+        mkdir -p ${FLATPAK_DEST}/share/wine/gecko/           # Make directory path for Wine Gecko
         cp -a wine-gecko-* ${FLATPAK_DEST}/share/wine/gecko/ # Copy Wine Gecko directories keeping file permissions the same
 
   # Wine addon that replaces the default .NET framework
@@ -529,7 +531,7 @@ modules:
     buildsystem: simple
     build-commands:
       - |
-        mkdir -p ${FLATPAK_DEST}/share/wine/mono/          # Make direcory path for Wine Mono
+        mkdir -p ${FLATPAK_DEST}/share/wine/mono/          # Make directory path for Wine Mono
         cp -a wine-mono-* ${FLATPAK_DEST}/share/wine/mono/ # Copy Wine Mono directory keeping file permissions the same
 
   # For helping to download and install various libraries, fonts, etc into a Wine prefix
@@ -596,7 +598,7 @@ modules:
     buildsystem: simple
     build-commands:
       - |
-        mkdir -p ${FLATPAK_DEST}/share/dxvk/                 # Make direcory path for DXVK
+        mkdir -p ${FLATPAK_DEST}/share/dxvk/                 # Make directory path for DXVK
         cp -a x32 ${FLATPAK_DEST}/share/dxvk/                # Copy 32bit DXVK keeping file permissions the same
         cp -a x64 ${FLATPAK_DEST}/share/dxvk/                # Copy 64bit DXVK keeping file permissions the same
 
@@ -614,7 +616,7 @@ modules:
           type: git
           tag-pattern: ^v(\d[\d\.]+\d)$ # Regex pattern that matches latest git tag and compares it to source
     build-options:
-      prepend-path: /usr/lib/sdk/mingw-w64/bin # /usr/lib/sdk/mingw-w64/bin contains x86_64-w64-mingw32-gcc and i686-w64-minigw32-gcc compilers from sdk-extension org.freedesktop.Sdk.Extension.mingw-w64
+      prepend-path: /usr/lib/sdk/mingw-w64/bin # /usr/lib/sdk/mingw-w64/bin contains x86_64-w64-mingw32-gcc and i686-w64-mingw32-gcc compilers from sdk-extension org.freedesktop.Sdk.Extension.mingw-w64
     buildsystem: simple
     build-commands:
       - |
