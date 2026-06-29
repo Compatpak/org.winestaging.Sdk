@@ -701,6 +701,8 @@ modules:
           type: html
           url: https://download.savannah.gnu.org/releases/icoutils/ # Use this file to...
           pattern: (icoutils-(\d[\d\.]+\d).tar.bz2)                 # Search for this regex pattern and compare it to source to see if there is a newer version
+      - type: patch
+        path: Patches/icoutils-gcc15.patch
     cleanup:
       - /share/docs # Remove documentation files
       - '*.la'      # Remove libtool archive files
