@@ -209,7 +209,9 @@ modules:
           url: https://pcsclite.apdu.fr/files/      # Use this file to...
           pattern: (pcsc-lite-(\d[\d\.]+\d).tar.xz) # Search for this regex pattern and compare it to source to see if there is a newer version
     config-opts: &libpcsclite-config-opts
-      - --disable-polkit # Disable polkit dependency
+      - -Dpolkit=false
+      - -Dlibsystemd=false
+    buildsystem: meson
     cleanup: &libpcsclite-cleanup
       - /share/docs # Remove documentation files
       - '*.la'      # Remove libtool archive files
@@ -223,6 +225,7 @@ modules:
     build-options:
       arch:
         x86_64: *compat-i386-build-options
+    buildsystem: meson
     cleanup: *libpcsclite-cleanup
 
   # For handling scanners (Optional Wine dependency)
