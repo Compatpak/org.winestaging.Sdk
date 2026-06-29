@@ -21,12 +21,12 @@ sdk-extensions:
 #   - org.freedesktop.Platform.Locale
 inherit-extensions:
   # Re-export org.freedesktop.Platform extensions for child Apps to inherit
-  - org.freedesktop.Platform.GL          # OpenGL
-  - org.freedesktop.Platform.VAAPI.Intel # Intel VAAPI
+  - org.freedesktop.Platform.GL           # OpenGL
+  - org.freedesktop.Platform.VAAPI.Intel  # Intel VAAPI
   - org.freedesktop.Platform.VulkanLayer
   - org.freedesktop.Platform.Timezones
   - org.freedesktop.Platform.GStreamer
-  - org.freedesktop.Platform.openh264
+  - org.freedesktop.Platform.codecs-extra
   - org.freedesktop.Platform.Icontheme
 # inherit-sdk-extensions:
 #   - org.freedesktop.Sdk.Extension
@@ -44,7 +44,7 @@ add-extensions:
   org.freedesktop.Platform.GL32:              # 32bit OpenGL
     directory: lib/i386-linux-gnu/GL
     version: '1.4'
-    versions: 24.08;1.4
+    versions: 25.08;25.08-extra;1.4
     subdirectories: true
     no-autodownload: true
     autodelete: false
@@ -57,7 +57,7 @@ add-extensions:
   org.freedesktop.Platform.GL32.Debug:        # 32bit OpenGL Debug
     directory: lib/debug/lib/i386-linux-gnu/GL
     version: '1.4'
-    versions: 24.08;1.4
+    versions: 25.08;25.08-extra;1.4
     subdirectories: true
     no-autodownload: true
     merge-dirs: vulkan/icd.d;glvnd/egl_vendor.d;egl/egl_external_platform.d;OpenCL/vendors;lib/dri;lib/d3d;lib/gbm;vulkan/explicit_layer.d;vulkan/implicit_layer.d
@@ -74,16 +74,16 @@ add-extensions:
     download-if: have-intel-gpu
     autoprune-unless: have-intel-gpu
 
-  org.freedesktop.Platform.ffmpeg-full:       # FFmpeg
-    directory: lib/ffmpeg
-    add-ld-path: .
-    version: *runtime-version
+  org.freedesktop.Platform.codecs-extra:        # Codecs (replaces ffmpeg-full & openh264)
+    directory: lib/codecs
+    add-ld-path: lib
+    version: '25.08-extra'
     autodelete: false
 
-  org.freedesktop.Platform.ffmpeg_full.i386:  # 32bit FFmpeg
-    directory: lib32/ffmpeg
-    add-ld-path: .
-    version: *runtime-version
+  org.freedesktop.Platform.codecs_extra.i386:   # 32bit Codecs
+    directory: lib32/codecs
+    add-ld-path: lib
+    version: '25.08-extra'
     autodelete: false
 # cleanup-commands:
 #   - /usr/libexec/freedesktop-post.sh # Pre-packaged script that sets up stuff (Not sure if still required)
