@@ -576,6 +576,41 @@ modules:
       - /include        # Remove header files
       - /lib/debug      # Remove debug files
 
+  # Replacement fonts that Windows expects in many instances (Arial, Times New Roman, Courier)
+  - name: liberation-fonts-ttf
+    sources:
+      - type: archive
+        url: https://github.com/liberationfonts/liberation-fonts/releases/download/2.1.2/liberation-fonts-ttf-2.1.2.tar.gz
+        sha256: 7191c669bf38899f73a2094ed00f7b800553364f90e2637010a69c0e268f25d0
+        x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
+          type: html
+          url: https://github.com/liberationfonts/liberation-fonts/releases                                                                 # Use this file to...
+          version-pattern: /liberationfonts/liberation-fonts/releases/tag/(\d[\d\.]+\d)                                                     # Search for this regex pattern
+          url-template: https://github.com/liberationfonts/liberation-fonts/releases/download/$version/liberation-fonts-ttf-$version.tar.gz # Compare this file (found using regex match from above) to the source to see if there is a newer version
+    buildsystem: simple
+    build-commands:
+      - |
+        # Make directory paths for Liberation fonts
+        mkdir -p ${FLATPAK_DEST}/share/fonts/liberation-mono-fonts/
+        mkdir -p ${FLATPAK_DEST}/share/fonts/liberation-sans-fonts/
+        mkdir -p ${FLATPAK_DEST}/share/fonts/liberation-serif-fonts/
+
+        # Install Liberation fonts
+        install -Dm644 LiberationMono-Bold.ttf -t ${FLATPAK_DEST}/share/fonts/liberation-mono-fonts/
+        install -Dm644 LiberationMono-BoldItalic.ttf -t ${FLATPAK_DEST}/share/fonts/liberation-mono-fonts/
+        install -Dm644 LiberationMono-Italic.ttf -t ${FLATPAK_DEST}/share/fonts/liberation-mono-fonts/
+        install -Dm644 LiberationMono-Regular.ttf -t ${FLATPAK_DEST}/share/fonts/liberation-mono-fonts/
+
+        install -Dm644 LiberationSans-Bold.ttf -t ${FLATPAK_DEST}/share/fonts/liberation-sans-fonts/
+        install -Dm644 LiberationSans-BoldItalic.ttf -t ${FLATPAK_DEST}/share/fonts/liberation-sans-fonts/
+        install -Dm644 LiberationSans-Italic.ttf -t ${FLATPAK_DEST}/share/fonts/liberation-sans-fonts/
+        install -Dm644 LiberationSans-Regular.ttf -t ${FLATPAK_DEST}/share/fonts/liberation-sans-fonts/
+
+        install -Dm644 LiberationSerif-Bold.ttf -t ${FLATPAK_DEST}/share/fonts/liberation-serif-fonts/
+        install -Dm644 LiberationSerif-BoldItalic.ttf -t ${FLATPAK_DEST}/share/fonts/liberation-serif-fonts/
+        install -Dm644 LiberationSerif-Italic.ttf -t ${FLATPAK_DEST}/share/fonts/liberation-serif-fonts/
+        install -Dm644 LiberationSerif-Regular.ttf -t ${FLATPAK_DEST}/share/fonts/liberation-serif-fonts/
+
   # Vulkan based DirectX 3, 5, 6, 7 (replaced with ddraw.dll)
   # Note: This module just places the D7VK ddraw.dll in ${FLATPAK_DEST}/share/d7vk/ and child Apps will have to copy/replace the default Wine ddraw.dll with this to make use of D7VK
   - name: d7vk
@@ -697,7 +732,7 @@ modules:
         install -Dm755 VKD3D-ProtonToWine.sh -t ${FLATPAK_DEST}/bin/ # Install script for switching Wine prefix to default Wine instead of VKD3D-Proton
         install -Dm755 WineToVKD3D-Proton.sh -t ${FLATPAK_DEST}/bin/ # Install script for switching Wine prefix to VKD3D-Proton instead of default Wine
 
-  # TODO: Test this module is working correctly on an Nvidia machine (along with it's script)
+  # TODO: Test this module and it's scripts are working correctly on an Nvidia machine
   # Alternative NVAPI implementation for use on top of DXVK and VKD3D-Proton (enables things like NVIDIA DLSS, Reflex, Physx, etc)
   # Note: This module just places the DXVK-NVAPI dlls and reflex layer in ${FLATPAK_DEST}/share/dxvk-nvapi/ and child Apps will have to copy/replace the default Wine dlls with these to make use of DXVK-NVAPI
   - name: dxvk-nvapi
