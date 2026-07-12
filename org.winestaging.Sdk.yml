@@ -680,7 +680,7 @@ modules:
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: html
           url: https://github.com/pythonlover02/DXVK-Sarek/tags                                                                     # Use this file to...
-          version-pattern: /doitsujin/dxvk/releases/tag/v(\d[\d\.]+\d)                                                              # Search for this regex pattern
+          version-pattern: /pythonlover02/DXVK-Sarek/releases/tag/v(\d[\d\.]+\d)                                                              # Search for this regex pattern
           url-template: https://github.com/pythonlover02/DXVK-Sarek/releases/download/v$version/dxvk-sarek-dyasync-v$version.tar.gz # Compare this file (found using regex match from above) to the source to see if there is a newer version
 
       # Script that switches a Wine prefix to the default Wine dlls instead of DXVK-Sarek dlls (Optionally ran by child Apps to update their already initialized Wine prefix)
