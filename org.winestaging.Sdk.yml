@@ -580,13 +580,12 @@ modules:
   - name: liberation-fonts-ttf
     sources:
       - type: archive
-        url: https://github.com/liberationfonts/liberation-fonts/releases/download/2.1.2/liberation-fonts-ttf-2.1.2.tar.gz
+        url: https://github.com/liberationfonts/liberation-fonts/files/7261482/liberation-fonts-ttf-2.1.5.tar.gz
         sha256: 7191c669bf38899f73a2094ed00f7b800553364f90e2637010a69c0e268f25d0
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: html
-          url: https://github.com/liberationfonts/liberation-fonts/releases                                                                 # Use this file to...
-          version-pattern: /liberationfonts/liberation-fonts/releases/tag/(\d[\d\.]+\d)                                                     # Search for this regex pattern
-          url-template: https://github.com/liberationfonts/liberation-fonts/releases/download/$version/liberation-fonts-ttf-$version.tar.gz # Compare this file (found using regex match from above) to the source to see if there is a newer version
+          url: https://github.com/liberationfonts/liberation-fonts/releases                                                 # Use this file to...
+          pattern: (https://github\.com/liberationfonts/liberation-fonts/files/\d+/liberation-fonts-ttf-([\d\.]+)\.tar\.gz) # Search for this regex pattern and compare it to source to see if there is a newer version
     buildsystem: simple
     build-commands:
       - |
