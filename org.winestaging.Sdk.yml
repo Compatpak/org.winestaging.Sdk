@@ -78,13 +78,13 @@ add-extensions:
   org.freedesktop.Platform.codecs-extra:      # Codecs (replaces ffmpeg-full & openh264)
     directory: lib/codecs
     add-ld-path: lib
-    version: '25.08-extra'
+    version: 25.08-extra
     autodelete: false
 
   org.freedesktop.Platform.codecs_extra.i386: # 32bit Codecs
     directory: lib32/codecs
     add-ld-path: lib
-    version: '25.08-extra'
+    version: 25.08-extra
     autodelete: false
 # cleanup-commands:
 #   - /usr/libexec/freedesktop-post.sh # Pre-packaged script that sets up stuff (Not sure if still required)
@@ -377,8 +377,8 @@ modules:
   - name: samba
     sources: &samba-sources
       - type: archive
-        url: https://download.samba.org/pub/samba/stable/samba-4.24.3.tar.gz
-        sha256: 4a5e0ed1ea192b798c873d9957c50a5767c10c2767cccb00d56ecc427e94f8e9
+        url: https://download.samba.org/pub/samba/stable/samba-4.24.4.tar.gz
+        sha256: df2c51ab4361ec626ab9988e5946efcca8465bc7afae834291d5558468265ff8
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: html
           url: https://download.samba.org/pub/samba/stable/ # Use this file to...
@@ -413,8 +413,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.winehq.org/wine/wine.git
-        tag: wine-11.11
-        commit: f6c044e1890e84a4aa5e77e76ba7276a615630e1
+        tag: wine-11.13
+        commit: 6eb2e4c32cc9e271856146df11ed3a5c2cf29234
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^wine-(\d+\.\d+)$ # Regex pattern that matches latest git tag and compares it to source
@@ -422,8 +422,8 @@ modules:
 
       - type: git
         url: https://gitlab.winehq.org/wine/wine-staging.git
-        tag: v11.11
-        commit: 4d000a90047e9e25655f8a9b9192e3c44acdbd4d
+        tag: v11.13
+        commit: d1f772d14409924a402ac512ebf3c7abd4fc2115
         dest: WineStaging
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
@@ -645,8 +645,8 @@ modules:
   - name: dxvk
     sources:
       - type: archive
-        url: https://github.com/doitsujin/dxvk/releases/download/v3.0/dxvk-3.0.tar.gz
-        sha256: 7dd3243fe1b260a0e9b0b9e49d672ae32e3398bee18c97e7e8569d0ef0eca92d
+        url: https://github.com/doitsujin/dxvk/releases/download/v3.0.1/dxvk-3.0.1.tar.gz
+        sha256: bebb6284db590535b7b005c102ebf6850c98842cff0fded9aacb74babae14c49
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: html
           url: https://github.com/doitsujin/dxvk/tags                                                      # Use this file to...
@@ -876,8 +876,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/ImageMagick/ImageMagick.git
-        tag: 7.1.2-26
-        commit: 38ba210c5e5a660013d632a3d33c431e658befcc
+        tag: 7.1.2-27
+        commit: b661ac969aa3a0d326690f95830aab246569f090
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: git
           tag-pattern: ^(\d[\d\.]+\d-\d+)$ # Regex pattern that matches latest git tag and compares it to source
