@@ -615,11 +615,11 @@ modules:
   - name: d7vk
     sources:
       - type: archive
-        url: https://github.com/WinterSnowfall/d7vk/releases/download/v1.11/d7vk-v1.11.zip
-        sha256: 158283fd299ab73bcb38733d31f49c5f7a9187d22ab81f48db881fbd96c969fb
+        url: https://github.com/WinterSnowfall/d7vk/releases/download/v1.12/d7vk-v1.12.zip
+        sha256: f6b5d704de67fd070c169933e4dfb0c4abd5c6a7247bf6f69733978543c3fb8d
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: html
-          url: https://github.com/WinterSnowfall/d7vk/tags                                                    # Use this file to...
+          url: https://github.com/WinterSnowfall/d7vk/releases                                                # Use this file to...
           version-pattern: /WinterSnowfall/d7vk/releases/tag/v(\d[\d\.]+\d)                                   # Search for this regex pattern
           url-template: https://github.com/WinterSnowfall/d7vk/releases/download/v$version/d7vk-v$version.zip # Compare this file (found using regex match from above) to the source to see if there is a newer version
 
