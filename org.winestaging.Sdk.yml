@@ -780,7 +780,7 @@ modules:
     build-commands:
       - |
         make -j`nproc --ignore=2`                      # Build using the number of available cores minus 2
-        install -Dm755 build/* -t ${FLATPAK_DEST}/bin/ # Install all built files
+        install -Dm755 build/* -t ${FLATPAK_DEST}/bin/ # Install all build files
 
   # Python3 module (Mandatory gtk-doc dependency)
   # TODO: Add x-checker-data
