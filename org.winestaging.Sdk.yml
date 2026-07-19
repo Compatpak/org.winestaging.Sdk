@@ -615,8 +615,8 @@ modules:
   - name: d7vk
     sources:
       - type: archive
-        url: https://github.com/WinterSnowfall/d7vk/releases/download/v1.12/d7vk-v1.12.zip
-        sha256: f6b5d704de67fd070c169933e4dfb0c4abd5c6a7247bf6f69733978543c3fb8d
+        url: https://github.com/WinterSnowfall/d7vk/releases/download/v2.0/d7vk-v2.0.zip
+        sha256: bc64c87a3839e4e1cda66a1bca13d7ed41e5ca7567dec691919646ff340198df
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: html
           url: https://github.com/WinterSnowfall/d7vk/releases                                                # Use this file to...
@@ -644,8 +644,8 @@ modules:
   - name: dxvk
     sources:
       - type: archive
-        url: https://github.com/doitsujin/dxvk/releases/download/v3.0.1/dxvk-3.0.1.tar.gz
-        sha256: bebb6284db590535b7b005c102ebf6850c98842cff0fded9aacb74babae14c49
+        url: https://github.com/doitsujin/dxvk/releases/download/v3.0.2/dxvk-3.0.2.tar.gz
+        sha256: 9c538924110a7cdef871ca36dee218c0774124374ffdeb38af4b76be55bdf7c2
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: html
           url: https://github.com/doitsujin/dxvk/tags                                                      # Use this file to...
@@ -680,7 +680,7 @@ modules:
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: html
           url: https://github.com/pythonlover02/DXVK-Sarek/tags                                                                     # Use this file to...
-          version-pattern: /pythonlover02/DXVK-Sarek/releases/tag/v(\d[\d\.]+\d)                                                              # Search for this regex pattern
+          version-pattern: /pythonlover02/DXVK-Sarek/releases/tag/v(\d[\d\.]+\d)                                                    # Search for this regex pattern
           url-template: https://github.com/pythonlover02/DXVK-Sarek/releases/download/v$version/dxvk-sarek-dyasync-v$version.tar.gz # Compare this file (found using regex match from above) to the source to see if there is a newer version
 
       # Script that switches a Wine prefix to the default Wine dlls instead of DXVK-Sarek dlls (Optionally ran by child Apps to update their already initialized Wine prefix)
