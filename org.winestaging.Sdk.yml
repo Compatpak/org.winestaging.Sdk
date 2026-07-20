@@ -1,13 +1,13 @@
 build-runtime: true
 id: org.winestaging.Sdk
 id-platform: org.winestaging.Platform
-branch: &app-version '11.11'
+branch: &app-version '11.13'
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
 runtime-version: &runtime-version '25.08'
 finish-args:
-  - --sdk=org.winestaging.Sdk//11.11
-  - --runtime=org.winestaging.Platform//11.11
+  - --sdk=org.winestaging.Sdk//11.13
+  - --runtime=org.winestaging.Platform//11.13
   - --socket=pcsc                             # Child apps will need to enable this to access smartcards
   # - --env=VK_ADD_IMPLICIT_LAYER_PATH="${HOME}/dxvk-nvapi/layer # TODO: Figure out this env var for installing DXVK-NVAPI properly
 sdk-extensions:
