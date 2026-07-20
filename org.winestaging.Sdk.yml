@@ -565,9 +565,9 @@ modules:
         sha256: b5546db1155e4c718ff3d4b278573604f30dd64c3c5bfd4657cd089b823a3ac6
         x-checker-data: # Checks for a newer version when org.flathub.flatpak-external-data-checker is ran on this file
           type: html
-          url: https://www.cabextract.org.uk/                                     # Use this file to...
-          version-pattern: href="cabextract-(\d[\d\.]+\d).tar.gz"                 # Search for this regex pattern
-          url-template: https://www.cabextract.org.uk/cabextract-$version.tar.gz  # Compare this file (found using regex match from above) to the source to see if there is a newer version
+          url: https://github.com/kyz/libmspack/tags                             # Use this file to...
+          version-pattern: /kyz/libmspack/releases/tag/v(\d[\d\.]+\d)            # Search for this regex pattern
+          url-template: https://www.cabextract.org.uk/cabextract-$version.tar.gz # Compare this file (found using regex match from above) to the source to see if there is a newer version
     cleanup:
       - /share/docs     # Remove documentation files
       - /share/examples # Remove example files
