@@ -726,7 +726,7 @@ modules:
     build-commands:
       - |
         mkdir -p ${FLATPAK_DEST}/share/vkd3d-proton/                 # Make directory path for VKD3D-Proton
-        cp -a x32 ${FLATPAK_DEST}/share/vkd3d-proton/                # Copy 32bit VKD3D-Proton keeping file permissions the same
+        cp -a x86 ${FLATPAK_DEST}/share/vkd3d-proton/                # Copy 32bit VKD3D-Proton keeping file permissions the same
         cp -a x64 ${FLATPAK_DEST}/share/vkd3d-proton/                # Copy 64bit VKD3D-Proton keeping file permissions the same
 
         install -Dm755 VKD3D-ProtonToWine.sh -t ${FLATPAK_DEST}/bin/ # Install script for switching Wine prefix to default Wine instead of VKD3D-Proton
