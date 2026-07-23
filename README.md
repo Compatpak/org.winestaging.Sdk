@@ -2,7 +2,7 @@
 ## Building
 > **_NOTE:_**  With org.freedesktop.Sdk//25.08 org.freedesktop.Platform//25.08 org.freedesktop.Sdk.Extension.mingw-w64//25.08 org.freedesktop.Sdk.Compat.i386//25.08 org.freedesktop.Sdk.Extension.toolchain-i386//25.08 org.freedesktop.Sdk.Extension.vala//25.08 installed.
 ```console
-flatpak-builder build-dir --repo=../Compatpak/repo --ccache --force-clean --gpg-sign=GPGKey org.winestaging.Sdk.yml
+flatpak-builder build-dir --repo=../Compatpak/repo --ccache --force-clean --disable-rofiles-fuse --gpg-sign=GPGKey org.winestaging.Sdk.yml
 ```
 ## Installing
 > **_NOTE:_**  With Compatpak repo added.
