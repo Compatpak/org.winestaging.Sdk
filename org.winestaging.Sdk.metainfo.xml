@@ -4,8 +4,11 @@
   <name>Wine Staging Sdk</name>
   <summary>Windows Program Compatibility Tool</summary>
   <releases>
-    <release version="11.13" date="2026-07-12">
+    <release version="11.14" date="2026-07-30">
       <description></description>
+    </release>
+    <release version="11.13" date="2026-07-12">
+      <description/>
     </release>
     <release version="11.11" date="2026-06-29">
       <description/>
