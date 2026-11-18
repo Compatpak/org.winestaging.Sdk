@@ -134,8 +134,8 @@ modules:
     sources: &libosmesa-sources
       - type: git
         url: https://gitlab.freedesktop.org/mesa/mesa.git
-        tag: mesa-26.3.1
-        commit: fec8830e9c94b1d67f3d8469467d5529fb2978cd
+        tag: mesa-25.0.7
+        commit: 742a20f48c59e8649533c84c4d49dd95b403f5da
     config-opts: &libosmesa-config-opts
       - -Dosmesa=true        # Only works because we are using old mesa 20.2.6 (If updated will need to be osmesa=true)
       - -Ddri-drivers=[]
