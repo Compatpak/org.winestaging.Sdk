@@ -4,7 +4,7 @@ build-runtime: true
 branch: &app-version '11.22'
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: &runtime-version '25.08'
+runtime-version: &runtime-version '26.08'
 finish-args:
   - --sdk=org.winestaging.Sdk//11.22
   - --runtime=org.winestaging.Platform//11.22
