@@ -134,10 +134,10 @@ modules:
     sources: &libosmesa-sources
       - type: git
         url: https://gitlab.freedesktop.org/mesa/mesa.git
-        tag: mesa-20.2.6
-        commit: 7b866d516a7dc0a36dc8ea7ce7733414294e26d9
+        tag: mesa-26.3.1
+        commit: fec8830e9c94b1d67f3d8469467d5529fb2978cd
     config-opts: &libosmesa-config-opts
-      - -Dosmesa=classic     # Only works because we are using old mesa 20.2.6 (If updated will need to be osmesa=true)
+      - -Dosmesa=true        # Only works because we are using old mesa 20.2.6 (If updated will need to be osmesa=true)
       - -Ddri-drivers=[]
       - -Dgallium-drivers=[]
       - -Dvulkan-drivers=[]
